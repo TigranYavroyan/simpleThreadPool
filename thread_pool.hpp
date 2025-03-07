@@ -7,6 +7,7 @@
 #include <mutex>
 #include <chrono>
 #include <queue>
+#include <functional>
 #include <condition_variable>
 
 template <std::size_t N>
