@@ -1,5 +1,4 @@
 #include <iostream>
-#include "threadsafe_stack.hpp"
 #include "thread_pool.hpp"
 
 std::mutex m;
