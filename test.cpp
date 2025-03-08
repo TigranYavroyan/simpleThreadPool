@@ -1,5 +1,4 @@
 #include <iostream>
-#include "threadsafe_stack.hpp"
 #include "thread_pool.hpp"
 
 std::mutex m;
@@ -15,7 +14,7 @@ void foo (int a, int b, int* res) {
 }
 
 int main () {
-	const std::size_t thread_count = 8;
+	const std::size_t thread_count = 6;
 	thread_pool<thread_count>& th = thread_pool<thread_count>::get_pool();
 	int res = 0;
 	for (int i = 0; i < 100; ++i) {

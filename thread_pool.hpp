@@ -53,9 +53,11 @@ void thread_pool<N>::add_task(task t) {
 
 template <std::size_t N>
 thread_pool<N>::thread_pool () : threads(N) {
-	if (N > std::thread::hardware_concurrency() - 1)
-		throw std::invalid_argument("Thread count is too big");
-	
+	std::size_t hardware_threads = std::thread::hardware_concurrency();
+	std::string err = "Thread count is too big. Must be less than " + std::to_string(hardware_threads);
+	if (N > hardware_threads - 1)
+		throw std::invalid_argument(err.c_str());
+
 	for (std::size_t i = 0; i < N; ++i) {
 		threads[i] = std::thread(&thread_pool::do_task, this);
 	}
